@@ -29,7 +29,8 @@ class DevConfig(BaseConfig):
     FLASK_ENV = 'development'
     DEBUG = True
     MAIL_BACKEND = 'console'
-    APP_URL_PREFIX = '/asdf'    # set to '' or comment out for dev deployment without prefix
+    # APP_URL_PREFIX = '/asdf'    # set to '' for dev deployment without prefix
+    APP_URL_PREFIX = ''
 
 
 class ProductionConfig(BaseConfig):

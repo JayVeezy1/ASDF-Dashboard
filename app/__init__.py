@@ -9,7 +9,7 @@ from werkzeug.exceptions import NotFound
 from werkzeug.middleware.proxy_fix import ProxyFix
 from werkzeug.middleware.dispatcher import DispatcherMiddleware
 
-from app.auth import login_mngr
+from app.auth import login_mngr             # TODO: Error here when using original Versions, sqlalchemy 2.5.1 tries: for key in module.__all__: but has no attribute '__all__'
 from app.blueprints.auth import auth as auth_blueprint
 from app.blueprints.dashboard import dashboard as dashboard_blueprint
 from app.blueprints.main import main as main_blueprint
@@ -48,8 +48,11 @@ def register_blueprints(app):
 
 def setup_db(app):
     if bool(strtobool(os.getenv("DATABASE_DROP_ALL", 'false'))):
-        db.drop_all(app=app)
-    db.create_all(app=app)  # create db
+        with app.app_context():
+            db.drop_all()       # TODO: this was changed: removed app=app
+
+    with app.app_context():
+        db.create_all()  # create db         # removed app=app
     app.logger.debug("Setup db")
 
 

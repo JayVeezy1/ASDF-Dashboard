@@ -1,21 +1,22 @@
-Flask==2.1.2
-Werkzeug <= 2.1.2
+Flask==2.2.3                        # latest: 2.2.3     original: 2.1.2
+Werkzeug==2.2.3                     # latest: 2.2.3     original: <=2.1.2
 psycopg2-binary==2.9.3
-Flask-SQLAlchemy==2.5.1
+Flask-SQLAlchemy==3.0.3             # latest: 3.0.3     original: 2.5.1
 Flask-DebugToolbar==0.13.1
-Flask-WTF==1.0.1
+Flask-WTF==1.0.1				    # latest: 1.1.1     original: 1.0.1
 WTForms-Components==0.10.5
-Flask-Login==0.6.1
+Flask-Login==0.6.2			        # latest: 0.6.2     original: 0.6.1
 Flask-Mailman==0.3.0
 Flask-Nav==0.6
-Flask-Caching==1.10.1
+Flask-Caching==1.10.1	    	    # latest: 2.0.2     original: 1.10.1
 bcrypt==3.2.2
-numpy==1.22.3
+
+numpy==1.23.5                       # old: ==1.22.3
 pandas==1.4.2
 scikit-learn==1.0.2
-matplotlib==3.5.1
+matplotlib==3.7.1					# latest: 3.7.1
 seaborn==0.11.2
-aif360==0.4.0
+aif360==0.5.0                       # old: ==0.4.0
 ipywidgets==7.7.0
 itables==0.4.6
 progressbar2==4.0.0
@@ -23,4 +24,8 @@ celery[redis]==5.2.6
 python-dotenv==0.20.0
 itsdangerous==2.1.2
 pyclustering==0.10.1.2
-lime
+lime~=0.2.0.1
+
+# added packages
+WTForms~=3.0.1      # was added by Pycharm
+shap~=0.41.0        # was added by Pycharm
