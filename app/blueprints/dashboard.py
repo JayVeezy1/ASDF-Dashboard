@@ -194,6 +194,39 @@ def fairness():
     return render_template('dashboard/fairness.html', all_datasets=all_datasets)
 
 
+@dashboard.route('/dashboard/thesis')
+@login_required
+@confirmation_required
+def thesis():
+    # Get all the user's datasets
+    selected_name = request.form.get('dataset')
+    all_datasets = Dataset.query.filter_by(owner=current_user.id).order_by(Dataset.upload_date.desc()).all()
+
+    dataset = None
+    if selected_name is None:
+        # Most recent uploaded (first in list)
+        if len(all_datasets) > 0:
+            dataset = all_datasets[0]
+        else:
+            return redirect(url_for('dashboard.datasets', info_modal_title="No datasets found",
+                                    info_modal_body="You have to upload a dataset first."))
+    else:
+        # Get dataset by name
+        for d in all_datasets:
+            if d.name == selected_name:
+                dataset = d
+        # Abort if dataset name does not match any of the datasets
+        if not dataset:
+            return redirect(url_for('dashboard.datasets', info_modal_title="Selected dataset not found",
+                                    info_modal_body=f"Couldn't find a dataset named {selected_name}."))
+
+    # Load data columns+types (cached)
+    columns = load_data(current_user.id, dataset.id).dtypes
+    # log.debug(f"{type(columns)}: {columns}")
+
+    return render_template('dashboard/thesis.html', all_datasets=all_datasets, dataset=dataset, columns=columns)
+
+
 @dashboard.route('/dashboard/clustering')
 @confirmation_required
 def clustering_info():

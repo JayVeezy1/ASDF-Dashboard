@@ -38,18 +38,15 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ url_for('dashboard.datasets') }}" class="nav-link py-3 border-bottom"
-                       title="Datasets"
-                       data-bs-toggle="tooltip"
-                       data-bs-placement="right">
+                       title="Datasets" data-bs-toggle="tooltip" data-bs-placement="right">
                         <svg class="bi" width="24" height="24" role="img" aria-label="Datasets">
                             <use xlink:href="#upload"/>
                         </svg>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url_for('dashboard.inspect') }}" class="nav-link py-3 border-bottom" title="Inspect"
-                       data-bs-toggle="tooltip"
-                       data-bs-placement="right">
+                    <a href="{{ url_for('dashboard.inspect') }}" class="nav-link py-3 border-bottom"
+                       title="Inspect" data-bs-toggle="tooltip" data-bs-placement="right">
                         <svg class="bi" width="24" height="24" role="img" aria-label="Inspect">
                             <use xlink:href="#table"/>
                         </svg>
@@ -57,10 +54,17 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ url_for('dashboard.fairness') }}" class="nav-link py-3 border-bottom"
-                       title="Dashboard" data-bs-toggle="tooltip"
-                       data-bs-placement="right">
+                       title="Fairness Dashboard" data-bs-toggle="tooltip" data-bs-placement="right">
                         <svg class="bi" width="24" height="24" role="img" aria-label="Fairness">
                             <use xlink:href="#speedometer2"/>
+                        </svg>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('dashboard.thesis') }}" class="nav-link py-3 border-bottom"
+                       title="Thesis" data-bs-toggle="tooltip" data-bs-placement="right">
+                        <svg class="bi" width="24" height="24" role="img" aria-label="Thesis">
+                            <use xlink:href="#speedometer"/>
                         </svg>
                     </a>
                 </li>

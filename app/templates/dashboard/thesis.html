@@ -1,0 +1,110 @@
+{% extends "dashboard/dashboard_base.html" %}
+
+{% block inner_content %}
+<div class="border rounded shadow p-2">
+    <h1 class="h2">Master Thesis Visualization</h1>
+
+    <div class="pt-5 fs-6">
+        This site displays key findings for the master thesis 'TITLE' at Goethe University. Further information
+        regarding the thesis can be found at Github: 'LINK'.
+    </div>
+
+    <h1 class="h2 pt-5">General Analytics</h1>
+    <div class="pt-3 fs-6">
+        Here are some general information about the uploaded dataset.
+    </div>
+
+    <h1 class="h2 pt-5">Clustering</h1>
+    <div class="pt-3 fs-6">
+        Different Clustering methods can be performed on the dataset.
+    </div>
+
+    <h1 class="h2 pt-5">Prediction Quality</h1>
+    <div class="pt-3 fs-6">
+        Different prediction models can be compared based on the results on the dataset.
+    </div>
+
+    <h1 class="h2 pt-5">Fairness</h1>
+    <div class="pt-3 fs-6">
+        For your uploaded datasets and classification results you can perform a <a
+            href="{{ url_for('dashboard.fairness') }}">subgroup fairness assessment</a>
+        using an automated process.
+        <br/>
+        The automated process computes a configurable clustering
+        on the uploaded data and derives subgroups from the clusters in two ways:
+        <ul>
+            <li>The computed clusters are directly used as subgroups to assess the classification model's
+                fairness on them.
+            </li>
+            <li>From the clusters, patterns are extracted that describe the makeup of the cluster for
+                all the dominant features in the corresponding cluster.
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="border rounded shadow mt-3 p-2">
+    <form id="thesis-form">
+        <h1 class="h2">Thesis Dataset</h1>
+        <!-- Dataset selectpicker -->
+            <div class="col col-1">
+                <label for="dataset-select" class="form-label col-form-label-lg">Dataset:</label>
+            </div>
+            <div class="col col-2 offset-1">
+                <select class="selectpicker" id="dataset-select" name="dataset" data-live-search="true"
+                        title="Choose a dataset..." required>
+                    {% for d in all_datasets %}
+                    <option value="{{ d.id }}">{{ d.name }}</option>
+                    {% endfor %}
+                </select>
+                <div class="invalid-feedback">
+                    Please select a dataset.
+                </div>
+            </div>
+
+            <!-- Evaluation buttons -->
+            <div class="d-flex mt-4 mb-3">
+                <input class="btn btn-lg btn-primary w-25 ms-auto me-auto" id="task-auto-submit" name="submit" type="button"
+                       value="Show Analysis">
+            </div>
+
+    <div class="row my-1">
+        <div class="alert alert-info" id="task-status" role="alert" style="display: none;">
+            Display progress information
+        </div>
+    </div>
+    </form>
+
+</div>
+
+<!-- TODO: Add graphs/interactive charts and tables
+1) make style dependent on button
+2) give button its own id
+3) give canvas its own id
+4) display predicitons canvas -> how to get data in there?
+
+Important: how and where are calculations run for the graphs?
+Should I just demand the user to upload a second, different dataset for the base of my calculations?
+-->
+
+<div id="chart-area" class="chart-area" style="display: none">
+    <div class="row gy-4 gx-3">
+        <div class="border rounded shadow p-0">
+            <div class="chart-container">
+                <canvas id="chart-fair"></canvas>
+            </div>
+             <div class="pt-3 fs-6">
+                    Testtext here.
+             </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+
+{% block scripts %}
+{{ super() }}
+<script src="{{ url_for('static', filename='js/thesis.js') }}"></script>
+{% endblock %}
