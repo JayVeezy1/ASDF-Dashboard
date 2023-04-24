@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 from sklearn.metrics import confusion_matrix
 
-from subgroup_detection.util import _dict_avg, _dict_map, _dict_min, _dict_max, _dict_apply
+from frontend.subgroup_detection.util import _dict_avg, _dict_map, _dict_min, _dict_max, _dict_apply
 
 
 class UndefinedOperatorError(ValueError):

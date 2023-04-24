@@ -7,10 +7,10 @@ from pyclustering.cluster.center_initializer import kmeans_plusplus_initializer
 from pyclustering.cluster.xmeans import xmeans
 from sklearn.cluster import KMeans
 
-from app.blueprints.util import load_data, get_param_dict
-from app.decorators import confirmation_required
-from app.model import Dataset
-from app.tasks import fairness_analysis, FairnessTask
+from frontend.app.blueprints.util import load_data, get_param_dict
+from frontend.app.decorators import confirmation_required
+from frontend.app.model import Dataset
+from frontend.app.tasks import fairness_analysis, FairnessTask
 
 task = Blueprint('task', __name__)
 log = logging.getLogger()

@@ -2,7 +2,7 @@ import datetime
 import uuid
 
 from flask_login import UserMixin
-from app.db import db
+from frontend.app.db import db
 
 UUID_LENGTH = 36  # 36 chars = 32 hex digits + 4 dashes
 EMAIL_LENGTH = 100

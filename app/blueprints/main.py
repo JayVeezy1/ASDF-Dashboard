@@ -3,10 +3,10 @@ import logging
 from flask import Blueprint, render_template, url_for, redirect
 from flask_login import login_required, current_user
 
-from app.auth import get_hashed_password
-from app.blueprints.forms import ChangePasswordForm, PasswordConfirmationForm
-from app.blueprints.util import get_user_quota, delete_all_datasets, delete_user_account
-from app.db import db
+from frontend.app.auth import get_hashed_password
+from frontend.app.blueprints.forms import ChangePasswordForm, PasswordConfirmationForm
+from frontend.app.blueprints.util import get_user_quota, delete_all_datasets, delete_user_account
+from frontend.app.db import db
 
 main = Blueprint('main', __name__)
 log = logging.getLogger()

@@ -5,7 +5,7 @@ from os import getenv
 from flask import render_template
 from flask_mailman import Mail, EmailMessage
 
-from app.util import get_project_root
+from frontend.app.util import get_project_root
 
 mail = Mail()
 log = logging.getLogger()

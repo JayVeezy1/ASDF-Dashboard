@@ -2,11 +2,11 @@ import pandas as pd
 from celery import Task
 from celery.utils.log import get_task_logger
 
-from app.blueprints.util import choose_model, estimate_n_clusters
-from app.cache import cache
-from app.celery_app import celery_app
-from app.model import Dataset
-from subgroup_detection.fairness import test_model_fairness
+from frontend.app.blueprints.util import choose_model, estimate_n_clusters
+from frontend.app.cache import cache
+from frontend.app.celery_app import celery_app
+from frontend.app.model import Dataset
+from frontend.subgroup_detection.fairness import test_model_fairness
 
 log = get_task_logger(__name__)
 

@@ -6,12 +6,12 @@ from flask import Blueprint, render_template, flash, redirect, url_for, current_
 from flask_login import login_user, login_required, logout_user, current_user
 from itsdangerous import SignatureExpired, BadSignature
 
-from app.auth import get_hashed_password, generate_token, confirm_token
-from app.blueprints.forms import RegisterForm, LoginForm, ForgotPasswordForm, ResetPasswordForm
-from app.blueprints.util import redirect_url
-from app.db import db
-from app.mail import send_confirmation_mail, send_password_reset_mail
-from app.model import User
+from frontend.app.auth import get_hashed_password, generate_token, confirm_token
+from frontend.app.blueprints.forms import RegisterForm, LoginForm, ForgotPasswordForm, ResetPasswordForm
+from frontend.app.blueprints.util import redirect_url
+from frontend.app.db import db
+from frontend.app.mail import send_confirmation_mail, send_password_reset_mail
+from frontend.app.model import User
 
 auth = Blueprint('auth', __name__)
 log = logging.getLogger()

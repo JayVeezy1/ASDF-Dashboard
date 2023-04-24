@@ -11,9 +11,9 @@ from wtforms import HiddenField, PasswordField, BooleanField, SubmitField, FileF
 from wtforms.validators import DataRequired, Length, EqualTo, ValidationError, Regexp
 from wtforms_components import StringField, Email, SelectField
 
-from app.auth import verify_password
-from app.blueprints.util import get_redirect_target, is_safe_url, get_user_quota
-from app.model import *
+from frontend.app.auth import verify_password
+from frontend.app.blueprints.util import get_redirect_target, is_safe_url, get_user_quota
+from frontend.app.model import *
 
 log = logging.getLogger()
 

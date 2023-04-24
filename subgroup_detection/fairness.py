@@ -10,9 +10,9 @@ from sklearn.base import ClusterMixin
 from sklearn.exceptions import UndefinedMetricWarning
 from sklearn.metrics import accuracy_score, f1_score
 
-from subgroup_detection.clustering import *
-from subgroup_detection.entropy import *
-from subgroup_detection.util import *
+from frontend.subgroup_detection.clustering import *
+from frontend.subgroup_detection.entropy import *
+from frontend.subgroup_detection.util import *
 
 
 def ground_truth_protected(data, protected):

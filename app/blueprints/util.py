@@ -9,10 +9,10 @@ from pyclustering.cluster.center_initializer import kmeans_plusplus_initializer
 from pyclustering.cluster.xmeans import xmeans
 from sklearn.cluster import *
 
-from app.cache import cache
-from app.db import db
-from app.model import Dataset
-from subgroup_detection.util import prepare
+from frontend.app.cache import cache
+from frontend.app.db import db
+from frontend.app.model import Dataset
+from frontend.subgroup_detection.util import prepare
 
 log = logging.getLogger()
 

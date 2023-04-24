@@ -9,18 +9,17 @@ from werkzeug.exceptions import NotFound
 from werkzeug.middleware.proxy_fix import ProxyFix
 from werkzeug.middleware.dispatcher import DispatcherMiddleware
 
-from app.auth import login_mngr
-from app.blueprints.auth import auth as auth_blueprint
-from app.blueprints.dashboard import dashboard as dashboard_blueprint
-from app.blueprints.main import main as main_blueprint
-from app.blueprints.task import task as task_blueprint
-from app.cache import cache
-from app.conf.config import ProductionConfig, DevConfig
-from app.db import db
-from app.mail import mail
-from app.util import ensure_exists_folder
-
-from app.celery_app import celery_app
+from frontend.app.auth import login_mngr
+from frontend.app.blueprints.auth import auth as auth_blueprint
+from frontend.app.blueprints.dashboard import dashboard as dashboard_blueprint
+from frontend.app.blueprints.main import main as main_blueprint
+from frontend.app.blueprints.task import task as task_blueprint
+from frontend.app.cache import cache
+from frontend.app.conf.config import ProductionConfig, DevConfig
+from frontend.app.db import db
+from frontend.app.mail import mail
+from frontend.app.util import ensure_exists_folder
+from frontend.app.celery_app import celery_app
 
 
 def setup_logging(app_root):
@@ -117,6 +116,14 @@ def create_app(configuration=ProductionConfig()):
     return app
 
 
+def start_app_from_main(use_this_function: False):
+    if use_this_function:
+        app = create_app(configuration=DevConfig())
+        app.run(debug=True)
+    return None
+
+
 if __name__ == '__main__':
     app = create_app(configuration=DevConfig())
     app.run(debug=True)
+

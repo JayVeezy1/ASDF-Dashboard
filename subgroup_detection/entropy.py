@@ -5,7 +5,7 @@ import seaborn as sb
 from ipywidgets import interact
 from matplotlib.collections import LineCollection
 from matplotlib.patches import Patch
-from subgroup_detection import util
+from frontend.subgroup_detection import util
 
 
 def normalized_entropy(data):

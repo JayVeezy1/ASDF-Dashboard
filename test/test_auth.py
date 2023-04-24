@@ -1,5 +1,5 @@
 import unittest
-from app.auth import get_hashed_password, verify_password
+from frontend.app.auth import get_hashed_password, verify_password
 
 
 class AuthTestCase(unittest.TestCase):

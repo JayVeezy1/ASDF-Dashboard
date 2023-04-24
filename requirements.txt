@@ -11,12 +11,12 @@ Flask-Nav==0.6
 Flask-Caching==1.10.1	    	    # latest: 2.0.2     original: 1.10.1
 bcrypt==3.2.2
 
-numpy==1.23.5                       # old: ==1.22.3
-pandas==1.4.2
-scikit-learn==1.0.2
-matplotlib==3.7.1					# latest: 3.7.1
-seaborn==0.11.2
-aif360==0.5.0                       # old: ==0.4.0
+numpy==1.23.5                       # original: 1.22.3
+pandas==1.4.2                       # original: 1.4.2
+scikit-learn==1.2.2                 # original: 1.0.2
+matplotlib==3.7.1					# original: 3.5.1
+seaborn==0.12.2                     # original: 0.11.2
+aif360==0.5.0                       # original: ==0.4.0
 ipywidgets==7.7.0
 itables==0.4.6
 progressbar2==4.0.0

@@ -6,12 +6,12 @@ from flask import Blueprint, render_template, url_for, request
 from flask_login import login_required, current_user
 from werkzeug.utils import redirect
 
-from app.blueprints.forms import UploadDatasetForm
-from app.blueprints.util import load_data, delete_data, get_clustering_info, _get_user_folder, redirect_url
-from app.db import db
-from app.decorators import confirmation_required
-from app.model import Dataset
-from app.util import ensure_exists_folder
+from frontend.app.blueprints.forms import UploadDatasetForm
+from frontend.app.blueprints.util import load_data, delete_data, get_clustering_info, _get_user_folder, redirect_url
+from frontend.app.db import db
+from frontend.app.decorators import confirmation_required
+from frontend.app.model import Dataset
+from frontend.app.util import ensure_exists_folder
 
 dashboard = Blueprint('dashboard', __name__)
 log = logging.getLogger()

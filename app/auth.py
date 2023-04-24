@@ -7,7 +7,7 @@ from itsdangerous import URLSafeTimedSerializer
 from werkzeug.utils import redirect
 
 # from app.blueprints.util import redirect_url
-from app.model import User
+from frontend.app.model import User
 
 # Login manager
 login_mngr = LoginManager()
