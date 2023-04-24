@@ -1,6 +1,7 @@
 import logging
 import logging.config
 import os
+import webbrowser
 from distutils.util import strtobool
 
 from dotenv import load_dotenv
@@ -116,14 +117,49 @@ def create_app(configuration=ProductionConfig()):
     return app
 
 
-def start_app_from_main(use_this_function: False):
+def start_dashboard_from_main(use_this_function: False):
+    # Setup of ASDF-Dashboard: https://github.com/jeschaef/ASDF-Dashboard
+    # 0.1) Install necessary Programs: Docker Desktop and Git
+    # 0.2) Make a fork for own Git Repository: https://github.com/JayVeezy1/ASDF-Dashboard
+    # 0.3) Copy Git Code to local inside shell: git clone https://github.com/JayVeezy1/ASDF-Dashboard
+
+    # Now two options:
+    # Productive Environment: for external hosting, uses nginx server program and postgres, not needed for thesis
+    # configure .env files according to info from ReadMe.md in the repository
+    # Move with Console into local Project Folder: cd C:\Users\Jakob\ASDF-Dashboard
+    # Execute build for 5 Docker Containers inside the Project folder with: docker-compose up --build
+    # Frontend should be available via defined URL in .env file or localhost
+
+    # Development Environment: Minimal Setup to use Frontend for local visualization, this is sufficient for thesis
+    # 1) Check if the required packages for the frontend are fulfilled in the main requirements file
+
+    # 2) Start the Redis and Celery Containers as described in ReadMe.md, can be done in console or in pycharm terminal
+    # todo future work: create + start docker container directly from here
+    # Starting Celery in here does not work because secondary terminal not available
+    # cmd_str = 'celery -A frontend.app.celery_app worker -P solo -l info'
+    # subprocess.call(cmd_str, creationflags=subprocess.CREATE_NEW_CONSOLE)
+
+
+    # 3) Start Frontend by running the app._init_ file of the project
     if use_this_function:
-        app = create_app(configuration=DevConfig())
-        app.run(debug=True)
+        print(f'\nSTATUS: Starting Frontend: ')
+
+        try:
+            app = create_app(configuration=DevConfig())
+            app.run(debug=True)
+            print(f'\nSTATUS: Frontend available at http://127.0.0.1:5000/')
+
+        except RuntimeError as e:
+            print(f'Error when starting frontend: {e}')
+
+    webbrowser.open('http://127.0.0.1:5000/', new=0, autoraise=True)
+
+    # todo future work: Add function to 'close asdf & background processes'
+
     return None
 
-
-if __name__ == '__main__':
-    app = create_app(configuration=DevConfig())
-    app.run(debug=True)
+# Commented out, main runs outside this file
+# if __name__ == '__main__':
+#    app = create_app(configuration=DevConfig())
+#    app.run(debug=True)
 
